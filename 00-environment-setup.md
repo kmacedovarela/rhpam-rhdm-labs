@@ -1,14 +1,8 @@
-# 0. Environment Setup
+# Environment Setup
 
-------
 
-# Table of Contents
 
-[TOC]
-
-------
-
-# Prereqs 
+## Pre-reqs
 
 In order to try out the labs and have an overview of [Red Hat Decision Manager](https://www.redhat.com/pt-br/technologies/jboss-middleware/decision-manager) (a.k.a. [Drools](drools.org) ), [Red Hat Process Automation Manager](https://www.redhat.com/pt-br/technologies/jboss-middleware/process-automation-manager) and its components and capabilities, there's a couple of prerequisites you should check and set up.
 

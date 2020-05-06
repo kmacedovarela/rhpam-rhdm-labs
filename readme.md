@@ -14,7 +14,7 @@ In order to try the labs, you  should have a running RHPAM or RHDM (choose accor
 
 ## Labs
 
-* [00: Installing RHDM and RHPAM](00-environment-setup) => *Pre requisite for most of the hands-on labs.*
+* [00: Installing RHDM and RHPAM](00-environment-setup.md) => *Pre requisite for most of the hands-on labs.*
 
 **Red Hat Decision Manager (RHDM):**
 

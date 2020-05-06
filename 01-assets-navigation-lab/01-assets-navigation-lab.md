@@ -1,8 +1,4 @@
-Assets Navigation Lab
-
----
-
-
+# Assets Navigation Lab
 
 This module showcases the Decision Central environment provisioned during the _Environment Setup Lab_. The business assets are retrieved from the `mortgages` project, one of the demonstration projects available out of the box for Decision Central.
 
@@ -19,7 +15,7 @@ In this lab, you explore the integration between a web application and the execu
 * Successful completion of the _0. Environment Setup Lab_
 * Successful login to Decision Central
 
----
+
 
 ## Import Project
 
@@ -30,8 +26,6 @@ In this lab, you explore the integration between a web application and the execu
 | http://localhost:8080/decision-central | `dmAdmin` | `redhatdm1!` |
 
 2. The Decision Central project library view is displayed when you click *Design* from the Decision Central home page. 
-
-![01-decision-central-design-option](/Users/kvarela/Desktop/01-decision-central-design-option.png)
 
 3. Select the `My Space` project. The project library view shows available projects in the library. If the library is empty, it shows "Nothing Here":
 
