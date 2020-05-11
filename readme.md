@@ -20,8 +20,8 @@ In order to try the labs, you  should have a running RHPAM or RHDM (choose accor
 
 **Optaplanner (included in both rhdm and rhpam)**:
 
-* 11: Shadow Variables
-* 21: Conference Scheduling
+* 11: [Shadow Variables](11_OptaPlanner_ShadowVariables/11_optaplanner_shadow_variables.md)
+* 21: [Conference Scheduling](21_OptaPlanner_Conference_Scheduling/21_optaplanner_conference_scheduling.md)
 
 
 
