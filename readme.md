@@ -16,6 +16,15 @@ In order to try the labs, you  should have a running RHPAM or RHDM (choose accor
 
 * [00: Installing RHDM and RHPAM](00-environment-setup.md) => *Pre requisite for most of the hands-on labs.*
 
+  
+
+**Optaplanner (included in both rhdm and rhpam)**:
+
+* 11: Shadow Variables
+* 21: Conference Scheduling
+
+
+
 **Red Hat Decision Manager (RHDM):**
 
 * 01: [The Value of Decision Management](/01-assets-navigation-lab/01-assets-navigation-lab.md)
@@ -23,13 +32,24 @@ In order to try the labs, you  should have a running RHPAM or RHDM (choose accor
   * [Creating a project](02-intro-decision-central-and-decision-server/02-1-create_project_Lab.md)
   * [Importing Assets](02-intro-decision-central-and-decision-server/02-2-import_assets_Lab.md)
 * 03: [Authoring Decision Tables](03-authoring-decision-tables/03-decision_tables_lab.md)
+* 04: [Introducing DMN](04_Introducing_DMN/04_deploy_DMN_Lab.md)
+* 06: [Intermediate DMN](06_Intermediate_DMN/06_deploy_DMN_Lab.md)
+* 07: [Advanced DMN](07_Advanced_DMN/07_deploy_DMN_Lab.md)
+* 20: [Test Scenarios](20_Test_Scenario/20_Test_Scenario_Lab.md)
 
 
 
 **Red Hat Process Automation Manager (RHPAM)** :
 
-**Red Hat PAM includes RHDM features*
+**Red Hat PAM includes all RHDM features*
 
 * 10: [Create Order Management Application](10-order-management-sample/10-create-order-management-app.md)
+
 * 14: [Recommendation Engine](14-recommendation-engine/14-recommendation-engine-lab.md)
+
+* 19: [Collaboration via Business Central](19_Collaboration_via_BC/19_Security_For_Collab_on_BC.md)
+
+  
+
+
 
