@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
+<?asciidoc-toc?>
+<?asciidoc-numbered?>
+
+<article lang="en">
+<articleinfo>
+    <date>2020-05-05</date>
+</articleinfo>
+<section id="_test_scenario_editor_lab">
+<title>Test Scenario editor Lab</title>
+<simpara>This lab will cover the new Test Scenario editor for DMN model testing and basic DRL.</simpara>
+<itemizedlist><title>Goals</title>
+<listitem>
+<simpara>
+Create multiple test scenarios for an existing DMN model using the Red Hat DM/PAM Test Scenario editor
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+Create a test scenario for the rules available in the default KieSession using the Red Hat DM/PAM Test Scenario editor
+</simpara>
+</listitem>
+</itemizedlist>
+<itemizedlist><title>Prerequisite</title>
+<listitem>
+<simpara>
+Successful completion of the <emphasis>Decision Model &amp; Notation Lab: Intermediate</emphasis>
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+An existing, accessible, DM/PAM 7.3+ environment.
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+<literal>call centre</literal> DMN model file imported to the project
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+<literal>checkFatherRule</literal> DRL file and <literal>Person</literal> data  object, both imported to the project
+</simpara>
+</listitem>
+</itemizedlist>
+</section>
+<section id="_dmn_model_testing">
+<title>DMN model testing</title>
+<section id="_introduction">
+<title>Introduction</title>
+<simpara>During this lab we are going test quite complex DML model that contains most of the DMN features:</simpara>
+<itemizedlist>
+<listitem>
+<simpara>
+Input nodes
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+Decision tables
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+Decision services
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+Relations
+</simpara>
+</listitem>
+</itemizedlist>
+<simpara><inlinemediaobject>
+  <imageobject>
+  <imagedata fileref="images/01_call_center_model.png"/>
+  </imageobject>
+  <textobject><phrase>images/01_call_center_model.png</phrase></textobject>
+</inlinemediaobject></simpara>
+</section>
+<section id="_create_the_scenario">
+<title>Create the Scenario</title>
+<simpara>A Test Scenario file can be created using the <literal>Add Asset</literal> button, choosing <literal>Test Scenario</literal> and then specifying name, package, type of the scenario (DMN in our lab) and which DMN Model wants to be tested</simpara>
+<simpara><inlinemediaobject>
+  <imageobject>
+  <imagedata fileref="images/02_scenario_creation.png"/>
+  </imageobject>
+  <textobject><phrase>images/02_scenario_creation.png</phrase></textobject>
+</inlinemediaobject></simpara>
+<simpara>After that Business Central will create the file, load all inputs/outputs from the DMN model and automatically create the scenario template. During this process it also perform additional checks on the DMN file and it can raise a warning message if contains any unsupported feature.</simpara>
+<simpara><inlinemediaobject>
+  <imageobject>
+  <imagedata fileref="images/03_unsupported_features.png"/>
+  </imageobject>
+  <textobject><phrase>images/03_unsupported_features.png</phrase></textobject>
+</inlinemediaobject></simpara>
+</section>
+<section id="_edit_template">
+<title>Edit template</title>
+<simpara>In our example the Decision <literal>banned phone numbers</literal> is a relation (a constant) that generate a top level list. This is not supported yet but it is not a problem in this model because it is useless to test a constant so we will just remove the columns related to that decision.</simpara>
+<note><simpara>Empty cells are skipped so it is the same to keep the columns and just not populate them</simpara></note>
+<simpara><inlinemediaobject>
+  <imageobject>
+  <imagedata fileref="images/04_remove_unsupported_columns.png"/>
+  </imageobject>
+  <textobject><phrase>images/04_remove_unsupported_columns.png</phrase></textobject>
+</inlinemediaobject></simpara>
+<simpara>Every column that has been removed can be added again using the contextual menu and the Test Tools panel: first add a new column, then use the Test Tools panel to navigate through the elements and select the property to add back.</simpara>
+<note><simpara>one useful use case based on the editing of the template is the possibility to test a sub decision in DMN: it is enough to isolate a decision in the <literal>EXPECT</literal> section and keep as <literal>GIVEN</literal> all the elements that are input to it (input or decision nodes)</simpara></note>
+<simpara><inlinemediaobject>
+  <imageobject>
+  <imagedata fileref="images/14_test_sub_decision.png"/>
+  </imageobject>
+  <textobject><phrase>images/14_test_sub_decision.png</phrase></textobject>
+</inlinemediaobject></simpara>
+</section>
+<section id="_populate_a_scenario">
+<title>Populate a scenario</title>
+<simpara>Now we already have the full template of the simulation created so we can start fill the data. Double click on each cell to enable inline editing</simpara>
+<note><simpara>All the expressions are parsed as FEEL expression</simpara></note>
+<simpara><inlinemediaobject>
+  <imageobject>
+  <imagedata fileref="images/05_inline_edit.png"/>
+  </imageobject>
+  <textobject><phrase>images/05_inline_edit.png</phrase></textobject>
+</inlinemediaobject></simpara>
+<simpara>If the column contains a list, the collection editor popup will be opened to allow user to add all the values</simpara>
+<simpara><inlinemediaobject>
+  <imageobject>
+  <imagedata fileref="images/06_list_editor.png"/>
+  </imageobject>
+  <textobject><phrase>images/06_list_editor.png</phrase></textobject>
+</inlinemediaobject></simpara>
+<simpara>Any operation related to the grid can be done using the contextual menu</simpara>
+<simpara><inlinemediaobject>
+  <imageobject>
+  <imagedata fileref="images/09_duplicate_row.png"/>
+  </imageobject>
+  <textobject><phrase>images/09_duplicate_row.png</phrase></textobject>
+</inlinemediaobject></simpara>
+</section>
+<section id="_run_a_scenario">
+<title>Run a scenario</title>
+<simpara>In any moment user can run the scenario and see if contains any error just using the play button in the toolbar. Each wrong value will be highlighted by a red background</simpara>
+<simpara><inlinemediaobject>
+  <imageobject>
+  <imagedata fileref="images/07_error_highlight.png"/>
+  </imageobject>
+  <textobject><phrase>images/07_error_highlight.png</phrase></textobject>
+</inlinemediaobject></simpara>
+<simpara>If the simulation contains no error the success report will appear</simpara>
+<simpara><inlinemediaobject>
+  <imageobject>
+  <imagedata fileref="images/08_test_succeeded.png"/>
+  </imageobject>
+  <textobject><phrase>images/08_test_succeeded.png</phrase></textobject>
+</inlinemediaobject></simpara>
+</section>
+<section id="_external_runner">
+<title>External runner</title>
+<simpara>Business Central creates, during first Test Scenario creation, a jUnit activator class <literal>ScenarioJunitActivatorTest</literal> that allow all the scenarios to be executed as classic Maven tests.</simpara>
+<simpara>After that a project can be cloned locally and built using <literal>mvn test</literal> command</simpara>
+<simpara><inlinemediaobject>
+  <imageobject>
+  <imagedata fileref="images/10_junit_activator.png"/>
+  </imageobject>
+  <textobject><phrase>images/10_junit_activator.png</phrase></textobject>
+</inlinemediaobject></simpara>
+</section>
+</section>
+<section id="_rule_testing">
+<title>Rule testing</title>
+<section id="_create_the_scenario_2">
+<title>Create the Scenario</title>
+<simpara>Quite the same of DMN testing: just choose <literal>RULE</literal> in the creation popup instead of <literal>DMN</literal></simpara>
+<note><simpara>Only default <literal>KieSession</literal> testing is supported at the moment</simpara></note>
+<tip><simpara>Create the scenario in the same package of the data model will be used to have them automatically imported</simpara></tip>
+</section>
+<section id="_create_the_template">
+<title>Create the template</title>
+<simpara>Rule testing is different compared to DMN because it is not possible to generate automatically the template. Extract all the possible input to the rule system is not an option and there is not explicit concept for output: each rule can alter an existing fact, insert a new one of the same type or even of a different type.</simpara>
+<simpara>User needs to import data types manually using the Data Objects tab, restart the editor and then create one by one the columns.</simpara>
+<simpara><inlinemediaobject>
+  <imageobject>
+  <imagedata fileref="images/11_data_objects.png"/>
+  </imageobject>
+  <textobject><phrase>images/11_data_objects.png</phrase></textobject>
+</inlinemediaobject></simpara>
+<simpara>The process to add a column is quite simple:</simpara>
+<itemizedlist>
+<listitem>
+<simpara>
+Right click on an instance header to open the contextual menu and add a new instance (before/after) or on a property header to add a new property of the same object
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+Select the new column created, use the Test Tools panel to navigate the object
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+Select the field to use and press <literal>Add</literal>
+</simpara>
+</listitem>
+</itemizedlist>
+<simpara><inlinemediaobject>
+  <imageobject>
+  <imagedata fileref="images/12_test_tools.png"/>
+  </imageobject>
+  <textobject><phrase>images/12_test_tools.png</phrase></textobject>
+</inlinemediaobject></simpara>
+</section>
+<section id="_work_with_alias">
+<title>Work with alias</title>
+<simpara>Each instance/property will have a default name generate by the system. User can edit it using the inline editing: double click on the header to enable edit mode.</simpara>
+<simpara><inlinemediaobject>
+  <imageobject>
+  <imagedata fileref="images/13_renaming_properties.png"/>
+  </imageobject>
+  <textobject><phrase>images/13_renaming_properties.png</phrase></textobject>
+</inlinemediaobject></simpara>
+</section>
+<section id="_multiple_instances">
+<title>Multiple instances</title>
+<simpara>Alias can be used also when user needs to have more than a single instance of a type in the scenario: rename an instance enable the possibility to add a new column of the same type to the scenario</simpara>
+<simpara>Using all these features, lets create this template</simpara>
+<simpara><inlinemediaobject>
+  <imageobject>
+  <imagedata fileref="images/15_template_created.png"/>
+  </imageobject>
+  <textobject><phrase>images/15_template_created.png</phrase></textobject>
+</inlinemediaobject></simpara>
+</section>
+<section id="_populate_the_scenario">
+<title>Populate the scenario</title>
+<simpara>Similar to DMN. Have a look to cheatsheet to verify accepted syntax</simpara>
+</section>
+<section id="_run_a_scenario_2">
+<title>Run a scenario</title>
+<simpara>Same of DMN</simpara>
+</section>
+<section id="_external_runner_2">
+<title>External runner</title>
+<simpara>Same of DMN</simpara>
+</section>
+</section>
+</article>

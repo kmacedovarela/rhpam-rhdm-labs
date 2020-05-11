@@ -1,0 +1,13 @@
+package com;
+
+import com.Person;
+
+dialect "java"
+
+rule "Father should be older than son"
+  when
+    $father: Person( )
+    $son: Person(fatherName == $father.name && $father.age <= age)
+  then
+    $father.setError(true);
+end
