@@ -50,7 +50,7 @@ In order to try the labs, you  should have a running RHPAM or RHDM (choose accor
 * 17: [Event Driven Decision]17_Event_Driven_Decisioning/17_Event_Driven_Decisioning_Lab.md)
 * 23: [Process Modeling Lab: The new BPMN editor](23_Stunner/23_Process_Modeling_with_Stunner_Lab.md)
 * 24: [Case Management](24_Case_Management/24_CaseManagement.md)
-  
+* 25: [SpringBoot](25_SpringBoot/25_SpringBoot.md)  
 
 
 
