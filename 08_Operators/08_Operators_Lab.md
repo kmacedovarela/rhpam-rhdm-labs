@@ -5,7 +5,7 @@ In this lab we will use the new Business Automation OpenShift Operator version *
 
 ## Goals
 
--   Provision an RHPAM 7 Trial Environment using the operator.
+-   Provision an RHPAM 7.3 Trial Environment using the operator.
 -   Explore Operator reconciliation features.
 -   Provision an RHPAM Production Environment using the operator.
 -   Add additional Execution Server groups to the installation using the Operator configuration.
